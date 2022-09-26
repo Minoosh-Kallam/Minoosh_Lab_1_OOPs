@@ -17,9 +17,7 @@ public class DriverClass {
 
 		int ch = 0;
 		while (ch != -1) {
-			System.out.println("Enter 1 to create Room");
-			System.out.println("Enter 2 to Book Room");
-			System.out.println("Enter -1 to break");
+			System.out.println("Enter 1 - create Room , 2 - Book Room , -1 - break");
 
 			ch = sc.nextInt();
 
@@ -37,12 +35,17 @@ public class DriverClass {
 				features.add((occupancy == 1) ? Features.SingleOccupancy
 						: (occupancy == 2) ? Features.DoubleOccupancy : Features.TripleOccupancy);
 
-				System.out.println("Enter 1 - AC , 2 - Non-AC");
+				System.out.println("Enter 1 - AC , 2 - Non-AC , 3 - ignore");
 				int ac = sc.nextInt();
 
-				features.add(ac == 1 ? Features.AC : Features.NON_AC);
+//				features.add(ac == 1 ? Features.AC );
+				
+				if(ac == 1)
+					features.add(Features.AC);
+				else if(ac == 1)
+					features.add(Features.NON_AC) ;
 
-				System.out.println("Enter 1 - TV , 2 - Non TV");
+				System.out.println("Enter 1 - TV , 2 - Non TV , 3 - ignore");
 				int tv = sc.nextInt();
 
 				if (tv == 1)
@@ -92,6 +95,8 @@ public class DriverClass {
 				
 				break ;
 
+			case -1 :
+				return ;
 				
 			default:
 				break;

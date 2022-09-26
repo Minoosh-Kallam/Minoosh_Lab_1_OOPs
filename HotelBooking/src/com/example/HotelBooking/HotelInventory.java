@@ -39,8 +39,11 @@ public class HotelInventory {
 	public HotelRoom checkAvailability(List<Features> requiredFeatures, int floor) {
 
 		for (HotelRoom room : hotel.getUnOccupiedRooms()) {
-			if (room.getFeatures().containsAll(requiredFeatures) && room.getRoomNo().charAt(0) - '0' == floor)
+			if (room.getFeatures().containsAll(requiredFeatures) && room.getRoomNo().charAt(0) - '0' == floor) {
+				hotel.getUnOccupiedRooms().remove(room);
+				hotel.getOccupiedRooms().add(room);
 				return room;
+			}
 		}
 
 		return null;
